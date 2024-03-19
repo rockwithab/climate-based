@@ -1,10 +1,16 @@
+import boto3
 import json
 import requests
 
+ssm = boto3.client('ssm', region_name='us-east-1')
+
+def get_parameter(name, decrypt=False):
+    response = ssm.get_parameter(Name=name, WithDecryption=decrypt)
+    return response['Parameter']['Value']
+
 def handler(event, context):
-    # TODO get these from the parameter store
-    api_key = ""
-    search_engine_id = ""
+    api_key = get_parameter('CustomSearchEngineAPIKey', decrypt=True)
+    search_engine_id = get_parameter('CustomSearchEngineId', decrypt=True)
 
     zip_code = event.get('zip_code', '')
     query = f"climate change resources for zip code {zip_code}"

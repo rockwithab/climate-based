@@ -1,3 +1,5 @@
 {
-  "lambdaLayers": []
+  "lambdaLayers": [],
+  "permissions": {},
+  "secretNames": []
 }
