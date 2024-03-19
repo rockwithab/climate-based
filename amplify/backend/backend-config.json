@@ -12,19 +12,12 @@
       ],
       "output": {
         "authConfig": {
-          "additionalAuthenticationProviders": [
-            {
-              "authenticationType": "AMAZON_COGNITO_USER_POOLS",
-              "userPoolConfig": {
-                "userPoolId": "authreactamplified75b2f3d4"
-              }
-            }
-          ],
+          "additionalAuthenticationProviders": [],
           "defaultAuthentication": {
-            "apiKeyConfig": {
-              "apiKeyExpirationDays": 7
-            },
-            "authenticationType": "API_KEY"
+            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+            "userPoolConfig": {
+              "userPoolId": "authreactamplified75b2f3d4"
+            }
           }
         }
       },
@@ -56,6 +49,32 @@
       },
       "providerPlugin": "awscloudformation",
       "service": "Cognito"
+    }
+  },
+  "function": {
+    "climatesearch": {
+      "build": true,
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_climatesearch_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "climatesearch"
+        }
+      ]
+    },
+    "AMPLIFY_function_climatesearch_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "climatesearch"
+        }
+      ]
     }
   }
 }

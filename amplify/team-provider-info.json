@@ -17,6 +17,12 @@
       },
       "auth": {
         "reactamplified75b2f3d4": {}
+      },
+      "function": {
+        "climatesearch": {
+          "deploymentBucketName": "amplify-reactamplified-dev-211631-deployment",
+          "s3Key": "amplify-builds/climatesearch-6f4c772b73623356326f-build.zip"
+        }
       }
     }
   }

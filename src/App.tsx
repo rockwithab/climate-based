@@ -42,7 +42,7 @@ const App: React.FC<AppProps> = ({ signOut, user }) => {
       const todos = todoData.data.listTodos.items;
       setTodos(todos);
     } catch (err) {
-      console.log('error fetching todos');
+      console.log('error fetching todos ' + err);
     }
   }
 
