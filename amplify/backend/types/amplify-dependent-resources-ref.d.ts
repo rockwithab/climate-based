@@ -24,5 +24,12 @@ export type AmplifyDependentResourcesAttributes = {
       "Name": "string",
       "Region": "string"
     }
+  },
+  "queue": {
+    "customqueue": {
+      "Arn": "string",
+      "Name": "string",
+      "Region": "string"
+    }
   }
 }

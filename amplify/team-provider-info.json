@@ -21,8 +21,11 @@
       "function": {
         "climatesearch": {
           "deploymentBucketName": "amplify-reactamplified-dev-211631-deployment",
-          "s3Key": "amplify-builds/climatesearch-4452456d344b43796558-build.zip"
+          "s3Key": "amplify-builds/climatesearch-58416a4f41655a446b77-build.zip"
         }
+      },
+      "queue": {
+        "customqueue": {}
       }
     }
   }

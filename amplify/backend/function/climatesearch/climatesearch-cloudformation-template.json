@@ -15,6 +15,14 @@
     },
     "s3Key": {
       "Type": "String"
+    },
+    "queuecustomqueueName": {
+      "Type": "String",
+      "Default": "queuecustomqueueName"
+    },
+    "queuecustomqueueArn": {
+      "Type": "String",
+      "Default": "queuecustomqueueArn"
     }
   },
   "Conditions": {
@@ -28,6 +36,20 @@
     }
   },
   "Resources": {
+    "LambdaFunctionEventSourceMapping": {
+      "DependsOn": [
+        "lambdaexecutionpolicy"
+      ],
+      "Type": "AWS::Lambda::EventSourceMapping",
+      "Properties": {
+        "EventSourceArn": {
+          "Ref": "queuecustomqueueArn"
+        },
+        "FunctionName": {
+          "Ref": "LambdaFunction"
+        }
+      }
+    },
     "LambdaFunction": {
       "Type": "AWS::Lambda::Function",
       "Metadata": {
@@ -69,6 +91,9 @@
             },
             "REGION": {
               "Ref": "AWS::Region"
+            },
+            "SQS_QUEUE": {
+              "Ref": "queuecustomqueueName"
             }
           }
         },
@@ -137,6 +162,17 @@
         "PolicyDocument": {
           "Version": "2012-10-17",
           "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": [
+                "sqs:ReceiveMessage",
+                "sqs:DeleteMessage",
+                "sqs:GetQueueAttributes"
+              ],
+              "Resource": {
+                "Ref": "queuecustomqueueArn"
+              }
+            },
             {
               "Effect": "Allow",
               "Action": [
